@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_END_POINT_User } from '../utils/constants';
 
 const CandidateSignup = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const CandidateSignup = () => {
 
     try {
       // API call for signup
-      await axios.post('http://localhost:5000/api/user/signup', formData);
+      await axios.post(`${API_END_POINT_User}/signup`, formData);
       setMessage('Signup successful! Redirecting to login...');
       setTimeout(() => navigate('/'), 2000); // Redirect to login page
     } catch (err) {

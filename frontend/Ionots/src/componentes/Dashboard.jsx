@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { API_END_POINT_User, API_END_POINT_Project } from '../utils/constants';
 
 const Dashboard = () => {
   const { candidateId } = useParams();
@@ -14,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCandidateData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/user/candidate/${candidateId}`);
+        const response = await axios.get(`${API_END_POINT_User}/candidate/${candidateId}`);
         setCandidateName(response.data.name);
       } catch (err) {
         console.error('Error fetching candidate data:', err);
@@ -27,7 +28,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAssignedProjects = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/project/assigned/${candidateId}`);
+        const response = await axios.get(`${API_END_POINT_Project}/assigned/${candidateId}`);
         setAssignedProjects(response.data);
       } catch (err) {
         console.error('Error fetching projects:', err);
@@ -62,7 +63,7 @@ const Dashboard = () => {
 
   const handleAcceptProject = async (projectId) => {
     try {
-      await axios.post(`http://localhost:5000/api/project/accept/${projectId}`, { candidateId });
+      await axios.post(`${API_END_POINT_Project}/accept/${projectId}`, { candidateId });
       toast.success('Project accepted and in progress!');
       setAssignedProjects(prevProjects =>
         prevProjects.map(project =>
@@ -76,7 +77,7 @@ const Dashboard = () => {
 
   const handleTaskCompletionChange = async (projectId, taskId, isChecked) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/project/task/update/${projectId}`, {
+      const response = await axios.post(`${API_END_POINT_Project}/task/update/${projectId}`, {
         taskId,
         isChecked,
       });

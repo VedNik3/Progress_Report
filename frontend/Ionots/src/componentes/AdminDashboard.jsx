@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_END_POINT_User, API_END_POINT_Project } from '../utils/constants';
 
 const AdminDashboard = () => {
   const [projectTitle, setProjectTitle] = useState('');
@@ -21,7 +22,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchCandidates = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/user/candidates');
+        const response = await axios.get(`${API_END_POINT_User}/candidates`);
         setCandidates(response.data);
       } catch (err) {
         console.error('Error fetching candidates:', err);
@@ -37,7 +38,7 @@ const AdminDashboard = () => {
     setIsLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/project/assign', {
+      await axios.post(`${API_END_POINT_Project}/assign`, {
         projectTitle,
         projectDescription,
         candidateId,

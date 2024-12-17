@@ -12,11 +12,23 @@ const app = express();
 
 app.use(express.json());
 
+// const corsOptions = {
+//     origin: 'http://localhost:5173', 
+//     credentials: true,
+//   };
+
 const corsOptions = {
-    origin: 'http://localhost:5173', 
-    credentials: true,
-  };
-  app.use(cors(corsOptions));                                    
+  origin: [
+    'https://progress-report-chi.vercel.app', 
+    'http://localhost:5173'  // Keep local development URL
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+};
+
+  app.use(cors(corsOptions));       
+                               
 const connectToDatabase = async () => {
     try {
       await mongoose.connect(process.env.MONGO_URL);

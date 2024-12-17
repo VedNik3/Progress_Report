@@ -16,17 +16,6 @@ export const getAssignedProjects = async (req, res) => {
   }
 };
 
-// Fetch projects for a candidate
-// export const getProjects = async (req, res) => {
-//   try {
-//     const { candidateId } = req.params;
-//     const projects = await Project.find({ assignedTo: candidateId });
-//     res.status(200).json(projects);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error fetching projects', error: error.message });
-//   }
-// };
-
 export const assignProject = async (req, res) => {
   const { projectTitle, projectDescription, candidateId, deadline, tasks } = req.body;
 
@@ -176,7 +165,7 @@ const updateProjectStatusIfDeadlinePassed = async () => {
       await project.save();
     });
 
-    console.log(`Updated ${projectsToUpdate.length} projects to 'Incomplete'`);
+    // console.log(`Updated ${projectsToUpdate.length} projects to 'Incomplete'`);
   } catch (err) {
     console.error('Error updating project status:', err);
   }

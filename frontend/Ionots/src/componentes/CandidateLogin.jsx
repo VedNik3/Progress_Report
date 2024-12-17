@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_END_POINT_User } from '../utils/constants';
 
 const CandidateLogin = () => {
   const [candidateId, setCandidateId] = useState('');
@@ -14,7 +15,7 @@ const CandidateLogin = () => {
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/user/login', { candidateId });
+      const response = await axios.post(`${API_END_POINT_User}/login`, { candidateId });
       const { role } = response.data.user;
 
       // Redirect based on role

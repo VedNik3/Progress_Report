@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { API_END_POINT_User } from '../utils/constants';
 
 const AdminProgress = () => {
   const [progressData, setProgressData] = useState([]);
@@ -10,7 +11,7 @@ const AdminProgress = () => {
   useEffect(() => {
     const fetchProgress = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/user/progress');
+        const response = await axios.get(`${API_END_POINT_User}/progress`);
         setProgressData(response.data);
         setLoading(false);
       } catch (err) {
@@ -25,6 +26,7 @@ const AdminProgress = () => {
 
   const getProgressColor = (progress) => {
     const progressNum = parseFloat(progress);
+    // console.log('Progress value:', progressNum);
     if (progressNum < 25) return 'bg-red-200';
     if (progressNum < 50) return 'bg-yellow-200';
     if (progressNum < 75) return 'bg-green-200';
