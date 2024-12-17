@@ -6,10 +6,11 @@
 3. [Technology Stack](#technology-stack)
 4. [Installation and Setup](#installation-and-setup)
 5. [Environment Variables](#environment-variables)
-6. [Usage](#usage)
-7. [Project Structure](#project-structure)
-8. [API Endpoints](#api-endpoints)
-9. [License](#license)
+6. [Important Instruction](#important-instruction)
+7. [Run](#run)
+8. [Access the Deployed Website](#access-the-deployed-website)
+9. [Website Images](#website-images)
+10. [Usage](#usage)
 
 ---
 
@@ -114,10 +115,38 @@ The website is already deployed. You can access it here: [Progress Report Websit
 - **ID:** `candidates101`
 - **ID:** `candidates102`
 
+---
+## **Website Images**
 
+### Login page - Both Admin and Candidate can login from here
+![Login page](./website_images/loginpage.png)
 
+### Signup page
+![Sign page](./website_images/signuppage.png)
 
+### Admin Task dashboard
+![admindash](./website_images/admindash.png)
 
+### Progress report page
+![progresspage](./website_images/progressreport.png)
+
+### Candidate dashboard
+![candidatedash](./website_images/userdash1.png)
+![candidatedash](./website_images/userdash2.png)
+
+---
+
+## **Usage**
+
+### **Admin Dashboard**
+- Log in using the admin credentials.
+- Assign projects and tasks to candidates.
+- Monitor progress and scores.
+
+### **Candidate Dashboard**
+- Log in using your candidate credentials.
+- View assigned projects and tasks.
+- Update task completion statuses and view progress.
 
 
 
