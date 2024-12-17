@@ -44,7 +44,7 @@ const ProjectSchema = new mongoose.Schema({
   ],
   score: {
     type: Number, // Score for the project (calculated based on completed tasks)
-    default: 0, // Initially 0, will be calculated later
+    default: 0, 
   },
 }, { timestamps: true });
 

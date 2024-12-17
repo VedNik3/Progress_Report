@@ -165,16 +165,16 @@ const updateProjectStatusIfDeadlinePassed = async () => {
       await project.save();
     });
 
-    // console.log(`Updated ${projectsToUpdate.length} projects to 'Incomplete'`);
+    
   } catch (err) {
     console.error('Error updating project status:', err);
   }
 };
 
 // Schedule a task to run once every day
-// cron.schedule('* * * * * *', updateProjectStatusIfDeadlinePassed); // This runs at midnight every day
+// cron.schedule('* * * * * *', updateProjectStatusIfDeadlinePassed); 
 cron.schedule('*/5 * * * *', updateProjectStatusIfDeadlinePassed);
 // cron.schedule('0 0 * * *', updateProjectStatusIfDeadlinePassed); // This runs at midnight every day
 
-// Call the function immediately on server start to check for already overdue projects
+
 updateProjectStatusIfDeadlinePassed();

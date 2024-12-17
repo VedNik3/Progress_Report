@@ -4,18 +4,13 @@ import dotenv from 'dotenv';
 import cors from "cors";
 import projectRoute from './routes/projectRoute.js'
 import userRoute from './routes/userRoute.js'
-// const itemRoutes = require('./routes/itemroute');
+
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
-
-// const corsOptions = {
-//     origin: 'http://localhost:5173', 
-//     credentials: true,
-//   };
 
 const corsOptions = {
   origin: [
@@ -39,9 +34,6 @@ const connectToDatabase = async () => {
     }   
   };
 
-
-// app.use('/api/items', itemRoutes);
-// app.use('/api/projects', require('./routes/projectRoutes'));
 app.use("/api/project", projectRoute);
 app.use("/api/user", userRoute);
 
